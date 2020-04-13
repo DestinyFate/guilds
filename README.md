@@ -1,8 +1,8 @@
 # Guildz
 A simple REST service to manage a guilds system
 
-#Instructions
-##Setup
+# Instructions
+## Setup
 1. Install `postgresql` and `node.js`
 
 2. Run `npm install` to install all of the necessary node modules in the repository
