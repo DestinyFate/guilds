@@ -1,5 +1,5 @@
 # Guilds
-A simple REST service to manage a guilds system.
+A simple REST service to manage a guilds system created using Sequelize, Postgresql, and Node.js
 
 # Instructions
 ## Setup
@@ -9,5 +9,10 @@ A simple REST service to manage a guilds system.
 
 3. Connect to your postgresql database via Terminal or GUI and create a database called `guilds`
 
-3. Change details in the `db.config.js` file to be able to access your postgresql db
+4. Change details in the `db.config.js` file to be able to access your postgresql db
+
+5. Run `node server.js` in your terminal to get the REST service up and running
+
+##Functions
+
 
