@@ -1,6 +1,5 @@
 # Guilds
-A simple REST service to manage a guilds system created using Sequelize, Postgresql, and Node.js
-
+A simple REST service to manage a guilds system. The service will be able to create and delete guilds, add and delete players from guilds, store guild exp, and have a role system  so only Officers and Leaders can add players to a guild.
 # Instructions
 ## Setup
 1. Install `postgresql` and `node.js`
@@ -12,7 +11,5 @@ A simple REST service to manage a guilds system created using Sequelize, Postgre
 4. Change details in the `db.config.js` file to be able to access your postgresql db
 
 5. Run `node server.js` in your terminal to get the REST service up and running
-
-##Functions
 
 
