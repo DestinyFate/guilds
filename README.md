@@ -1,5 +1,5 @@
-# Guildz
-A simple REST service to manage a guilds system
+# Guilds
+A simple REST service to manage a guilds system.
 
 # Instructions
 ## Setup
