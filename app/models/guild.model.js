@@ -1,25 +1,25 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Guild = sequelize.define("guild", {
     id:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
       title: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       users:{
-        type:  Sequelize.ARRAY(Sequelize.JSONB),
+        type:  DataTypes.ARRAY(DataTypes.JSONB),
         defaultValue: null
       },
       fame: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       description: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       visibility: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
       }
     
     });
