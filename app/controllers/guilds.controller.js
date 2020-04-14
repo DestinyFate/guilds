@@ -12,15 +12,16 @@ exports.create = (req, res) => {
       return;
     }
     //will have the creator added to guild with founder role (int value of 3)
-    let usersArr = [].push(
+    let usersArr = [
         {userId: req.body.userId,
          name: req.body.name,
          position: 3,
-         fame: 0});
+         fame: 0}];
+         console.log(usersArr)
     // Create a guild
     //User will be formatted to: {String userid, Integer position, Integer fame}
     const guild = {
-      name: req.body.title,
+      title: req.body.title,
       users: usersArr,
       fame: 0,
       description: req.body.description,
@@ -59,7 +60,7 @@ exports.getAllPublic = (req, res) => {
 exports.findOneById = (req, res) => {
     const id = req.params.id;
   
-    Tutorial.findByPk(id)
+    Guild.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -79,7 +80,7 @@ exports.findOneById = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving guild with name=" + name
+          message: "Error retrieving guild with name=" + title
         });
       });
   };
@@ -99,13 +100,13 @@ exports.update = (req, res) => {
           });
         } else {
           res.send({
-            message: `Cannot update guild with name=${name}.`
+            message: `Cannot update guild with name=${title}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating guild  " + name
+          message: "Error updating guild  " + title
         });
       });
   };
@@ -114,11 +115,12 @@ exports.update = (req, res) => {
     const id = req.params.id;
     Guild.findByPk(id)
     .then(data => {
-        data.users.push({userId:req.params.userId,
-                         name: req.params.playerName, 
+        console.log(data);
+        data.dataValues.users.push({userId:req.body.userId,
+                         name: req.body.name, 
                          position: 0,
                          fame: 0 });
-        Guild.update(data, {
+        Guild.update(data.dataValues, {
             where: { id: id }
           })
             .then(num => {
@@ -134,13 +136,13 @@ exports.update = (req, res) => {
             })
             .catch(err => {
               res.status(500).send({
-                message: "Error finding the guild: " + name
+                message: "Error finding the guild: " + title
               });
             });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving guild with name=" + name
+        message: "Error retrieving guild with name=" + title
       });
     });
 
@@ -170,22 +172,25 @@ exports.delete = (req, res) => {
       });
   };
 // Deletes a player from the guild
+//{name}
+//To do: permissions
 exports.deletePlayer = (req, res) => {
     const id = req.params.id;
     Guild.findByPk(id)
     .then(data => {
-        data.users = data.users.filter(playerName => playerName !== req.params.playerName)
-        Guild.update(data, {
+        data.dataValues.users = data.dataValues.users.filter(user => user.name !== req.body.name);
+        console.log( data.dataValues.users)
+        Guild.update(data.dataValues, {
             where: { id: id }
           })
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "Player was added successfully."
+                  message: "Player was deleted successfully."
                 });
               } else {
                 res.send({
-                  message: `Error in adding player into the guild.`
+                  message: `Error in deleting player from the guild.`
                 });
               }
             })

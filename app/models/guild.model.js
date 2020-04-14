@@ -5,11 +5,11 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true
     },
-      name: {
+      title: {
         type: Sequelize.STRING
       },
       users:{
-        type:  Sequelize.ARRAY(Sequelize.JSON),
+        type:  Sequelize.ARRAY(Sequelize.JSONB),
         defaultValue: null
       },
       fame: {

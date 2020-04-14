@@ -7,7 +7,7 @@ module.exports = app => {
     router.post("/", guild.create);
   
     // Get all public guilds
-    router.get("/public", guild.findAllPublic);
+    router.get("/public/", guild.getAllPublic);
   
     // Retrieve a single guild with id
     router.get("/:id", guild.findOneById);

@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 //sets the routes
-require("./app/routes/turorial.routes")(app);
+require("./app/routes/guilds.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
